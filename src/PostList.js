@@ -13,7 +13,7 @@ class Posts extends React.Component {
     }
     
     render(){ 
-        console.log(this.props)
+       // console.log(this.props)
         return (
             <div>
                 <h1>Listing Posts - {this.props.posts.length} </h1>

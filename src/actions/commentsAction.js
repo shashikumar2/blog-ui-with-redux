@@ -9,7 +9,7 @@ export const startGetComments = () => {
     return (dispatch) => {
         axios.get('http://jsonplaceholder.typicode.com/comments')
             .then(response => {
-                 console.log(response.data)
+                // console.log(response.data)
                 const comments = response.data 
                 dispatch(setComments(comments))
             })

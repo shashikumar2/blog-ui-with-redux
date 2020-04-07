@@ -8,10 +8,10 @@ import {startGetUsers} from './actions/usersAction'
 import {startGetComments} from './actions/commentsAction'
 // import { increment, decrement } from './actions/countAction'
 const store = configureStore() 
-console.log(store.getState())
+//console.log(store.getState())
 
 store.subscribe(() => {
-    console.log(store.getState())
+    console.log('index',store.getState())
 })
 
 

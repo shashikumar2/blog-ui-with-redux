@@ -2,7 +2,7 @@ const commentsInitialState = []
 
 const commentsReducer = (state = commentsInitialState, action) => {
     switch(action.type) {
-        case 'SET_USERS' : {
+        case 'SET_COMMENTS' : {
             return [].concat(action.payload)
         }
         default: {

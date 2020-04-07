@@ -8,18 +8,21 @@ import {startGetComments} from './actions/commentsAction'
 class PostShow extends React.Component {
 
     componentDidMount() {
-        if(this.props.comments.length === 0) {
+        if(this.props.postComments.length === 0) {
             this.props.dispatch(startGetComments())
         }
     }
 
     render() {
         //console.log(this.props)
-        let  user = this.props.users.find(user=> user.id === this.props.post.userId)
-        console.log(user)
+        
+       // console.log(user)
+        console.log('PostShowcomments', this.props.postComments)
         return (
             <div> 
-                <h2>User Name : {user.name}</h2>
+                {(this.props.post && this.props.users.length>0) ? (
+                <div>
+                <h2>User Name : {this.props.users.find(user=> user.id === this.props.post.userId).name}</h2>
                 <h4>Title : {this.props.post.title} </h4>
                 <h4>Body : {this.props.post.body} </h4>
 
@@ -31,13 +34,19 @@ class PostShow extends React.Component {
                      } )}
                     </ul> 
 
-                    <Link to={`/users/${user.id}`} >More posts of the authors</Link>                
+                    <Link to={`/users/${this.props.post.userId}`} >More posts of the authors</Link>   
+                    </div>
+                ) : (
+                    <p> loading ...</p>
+                )}             
                     
             </div> 
         )
     }
 }
 const mapStateToProps = (state, props) => {
+    console.log('postshowmapstate', state.comments)
+    console.log('postshowmapstate', props.match.params.id)
     return {
         post : state.posts.find(post=> post.id == props.match.params.id),
         postComments : state.comments.filter(comment=> comment.postId == props.match.params.id),
